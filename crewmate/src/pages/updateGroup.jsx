@@ -2,6 +2,7 @@ import Sidebar from '../components/Sidebar';
 import {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import './updateGroup.css';
+import { supabase } from '../client';
 
 const UpdateGroup = () => {
     const [groupName, setGroupName] = useState('');
@@ -16,20 +17,65 @@ const UpdateGroup = () => {
     const { id } = useParams();
 
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("item updated")
-        window.location.href = '/groups';
+        const { error } = await supabase
+        .from('Groups')
+        .update({
+            groupName: groupName,
+            courseCode: courseCode,
+            description: description,
+            members: members,
+            email: contactEmail,
+            totalMembers: totalMembers,
+            time: meetingTime,
+            location: meetingLocation,
+            groupType: groupType
+        })
+        .eq('id', id);
+
+        if (error) {
+            alert('An error occurred while updating the group: ' + error.message);
+        }
+        else {
+            window.location.href = '/groups';
+
+        }
+        
 
     }
 
 
     useEffect(() => {
-      const fetchGroup = () => {
-        alert("group fetched");
-      }
-
-      fetchGroup();
+        const fetchGroup = async () => {
+            // Convert the id to a number
+            const groupId = Number(id);
+    
+            const { data, error } = await supabase
+                .from('Groups')
+                .select('*')
+                .eq('id', groupId); // Use the converted number
+    
+            if (error) {
+                console.error('Error fetching group:', error);
+            } else if (data.length > 0) {
+                const groupData = data[0];
+                setGroupName(groupData.groupName);
+                setCourseCode(groupData.courseCode);
+                setDescription(groupData.description);
+                setMembers(groupData.members);
+                setContactEmail(groupData.email);
+                setTotalMembers(groupData.totalMembers);
+                setMeetingTime(groupData.time);
+                setMeetingLocation(groupData.location);
+                setGroupType(groupData.groupType);
+           
+            } else {
+                console.warn('No group found with the given ID');
+            }
+        };
+        
+        fetchGroup();
     }, [])
     
     return (
