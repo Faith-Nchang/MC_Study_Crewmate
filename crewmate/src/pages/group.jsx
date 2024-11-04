@@ -2,6 +2,7 @@ import SideBar from "../components/sideBar";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import './group.css';
+import { supabase } from "../client";
 
 const Group = () => {
     const [group, setGroup] = useState({});
@@ -20,9 +21,27 @@ const Group = () => {
     };
 
     useEffect(() => {
-        // Fetch group data from the server
-        setGroup(sampleGroup);
+        const fetchGroup = async () => {
+            // Convert the id to a number
+            const groupId = Number(id);
+    
+            const { data, error } = await supabase
+                .from('Groups')
+                .select('*')
+                .eq('id', groupId); // Use the converted number
+    
+            if (error) {
+                console.error('Error fetching group:', error);
+            } else if (data.length > 0) {
+                setGroup(data[0]); // Access the first object in the array
+            } else {
+                console.warn('No group found with the given ID');
+            }
+        };
+        
+        fetchGroup();
     }, [id]);
+    
     
     return (
         <div>
@@ -34,10 +53,10 @@ const Group = () => {
                 <p><strong>Course Code</strong> {group.courseCode}</p>
                 <p><strong>Description</strong> {group.description}</p>
                 <p><strong>Members</strong> {group.members}</p>
-                <p><strong>Contact Email</strong> {group.contactEmail}</p>
+                <p><strong>Contact Email</strong> {group.email}</p>
                 <p><strong>Total Members</strong> {group.totalMembers}</p>
-                <p><strong>Meeting Time</strong> {group.meetingTime}</p>
-                <p><strong>Meeting Location</strong> {group.meetingLocation}</p>
+                <p><strong>Meeting Time</strong> {group.time}</p>
+                <p><strong>Meeting Location</strong> {group.location}</p>
                 <p><strong>Group Type</strong> {group.groupType}</p>
             </div>
         </div>
