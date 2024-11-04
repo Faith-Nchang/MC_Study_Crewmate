@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SideBar from "../components/sideBar";
 import './groups.css';
 import GroupCard from "../components/GroupCard";
+import { supabase } from "../client";
 
 const Groups = () => {
     const [groups, setGroups] = useState([]);
@@ -48,9 +49,14 @@ const Groups = () => {
 
 
     
-    const fetchGroups = () => {
+    const fetchGroups = async () => {
         // Fetch group data from the server
-        setGroups(sampleGroups);
+        const {data} = await supabase
+        .from('Groups')
+        .select()
+        .order('created_at', { ascending: true })
+
+        setGroups(data);
     };
 
     useEffect(() => {
