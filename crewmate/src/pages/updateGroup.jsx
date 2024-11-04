@@ -1,6 +1,6 @@
 import Sidebar from '../components/Sidebar';
 import {useState, useEffect} from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './updateGroup.css';
 
 const UpdateGroup = () => {
@@ -15,8 +15,22 @@ const UpdateGroup = () => {
     const [groupType, setGroupType] = useState('');
     const { id } = useParams();
 
-    const history = useHistory();   
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        alert("item updated")
+        window.location.href = '/groups';
 
+    }
+
+
+    useEffect(() => {
+      const fetchGroup = () => {
+        alert("group fetched");
+      }
+
+      fetchGroup();
+    }, [])
     
     return (
         <div className="container">

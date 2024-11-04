@@ -1,8 +1,9 @@
-import Sidebar from '../components/sideBar';
+import SideBar from '../components/Sidebar';
 import React from 'react';
 import './createGroup.css';
 import '../App.css';
 import {useState} from 'react';
+import { supabase } from '../client'
 
 const CreateGroup = () => {
     const [groupName, setGroupName] = useState('');
@@ -15,25 +16,34 @@ const CreateGroup = () => {
     const [meetingLocation, setMeetingLocation] = useState('');
     const [groupType, setGroupType] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Group Name:', groupName);
-        console.log('Course Code:', courseCode);
-        console.log('Description:', description);
-        console.log('Members:', members);
-        console.log('Contact Email:', contactEmail);
-        console.log('Total Members:', totalMembers);
-        console.log('Meeting Time:', meetingTime);
-        console.log('Meeting Location:', meetingLocation);
-        console.log('Group Type:', groupType);
-        alert('Group created successfully!');
+        if (!groupName || !description || !contactEmail) {
+            alert('Group Name, Description, and Contact Email are required.');
+            return;
+        }
+        await supabase
+        .from('Groups')
+        .insert(
+        {
+            groupName: groupName,
+            courseCode: courseCode,
+            description: description,
+            members: members,
+            email: contactEmail,
+            totalMembers: totalMembers,
+            time: meetingTime,
+            location: meetingLocation,
+            groupType: groupType
+        })
+        .select();
 
-        window.location.href = '/createdGroups';
+        window.location.href = '/groups';
     }
     return (
         <div className="container">
             <div>
-                <Sidebar />
+                <SideBar />
             </div>
             <div className="main">
                 <h1>Create new Groups</h1>

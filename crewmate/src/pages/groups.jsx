@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import SideBar from "../components/sideBar";
 import './groups.css';
 import GroupCard from "../components/GroupCard";
-import { useHistory } from "react-router-dom";
 
 const Groups = () => {
     const [groups, setGroups] = useState([]);
-    const history = useHistory();
 
 
     const sampleGroups = [
@@ -66,6 +64,8 @@ const Groups = () => {
         alert(`Deleting group with ID: ${groupId}`);
         // Simulate deletion and refetch groups
         fetchGroups();
+        window.location.href = '/update-group/' + groupId;
+
     };
 
     const handleDeleteGroup = (groupId) => {
@@ -73,7 +73,8 @@ const Groups = () => {
     };
 
     const handleViewGroup = (groupId) => {
-        alert(`Viewing group with ID: ${groupId}`);
+        window.location.href = '/group/' + groupId;
+
     };
     return (
         <div>
