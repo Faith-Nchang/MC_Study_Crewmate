@@ -38,6 +38,7 @@ const UpdateGroup = () => {
             alert('An error occurred while updating the group: ' + error.message);
         }
         else {
+            alert('Group info updated');
             window.location.href = '/groups';
 
         }
@@ -159,7 +160,7 @@ const UpdateGroup = () => {
                         </label>
                     </div>
                     <div className="submit">
-                    <button type="submit" className='submit-btn' onClick={handleSubmit}>Create Group</button>
+                    <button type="submit" className='submit-btn' onClick={handleSubmit}>Update Group</button>
                     </div>
                 </form>
             </div>

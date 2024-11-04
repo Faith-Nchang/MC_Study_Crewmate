@@ -37,7 +37,7 @@ const CreateGroup = () => {
             groupType: groupType
         })
         .select();
-
+        alert('Group successfully created');
         window.location.href = '/groups';
     }
     return (

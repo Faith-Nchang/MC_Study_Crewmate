@@ -34,6 +34,7 @@ const Groups = () => {
         if (error) {
             console.error("Error deleting group:", error);
         } else {
+            alert('Group sucessfully deleted')
             fetchGroups();
         }
     };
