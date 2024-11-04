@@ -8,6 +8,7 @@ import CreateGroup from './pages/createGroup.jsx'
 import Group from './pages/group.jsx'
 import Groups from './pages/groups.jsx';
 import UpdateGroup from './pages/updateGroup.jsx';
+import NotFound from './pages/NotFound.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/group/:id" element={<Group />} />
         <Route path="/create-group" element={<CreateGroup />} />
         <Route path="/update-group/:id" element={<UpdateGroup />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

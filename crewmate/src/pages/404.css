@@ -1,0 +1,17 @@
+.container_c {
+    background-color: #3f5177;
+    padding: 20px;
+    border-radius: 8px;
+    color: black;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: fit-content;
+
+  }
+
+  .outer {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-top: 100px;
+  }

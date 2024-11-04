@@ -45,4 +45,10 @@
 
 .sidebar .item.active {
     background-color: #34495e; /* Background for active item */
+    color: rgb(219, 137, 219);
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
 }
+
+

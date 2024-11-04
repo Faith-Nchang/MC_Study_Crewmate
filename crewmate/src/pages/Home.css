@@ -1,0 +1,27 @@
+h1, h2 {
+    text-align: center;
+    color: white;
+}
+
+.app-description {
+    margin-top: 50px;
+    text-align: center;
+}
+
+p {
+    padding: 20px 0px;
+}
+.submit-btn {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+    text-decoration: none;
+}
+
+.submit-btn:hover {
+    background-color: #442344;
+}
