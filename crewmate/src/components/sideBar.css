@@ -1,0 +1,48 @@
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #2c3e50;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    font-size: large;
+}
+
+.sidebar .logo {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    padding-left: 10px; /* Adjust padding as necessary */
+}
+
+.sidebar .menu {
+    flex-grow: 1; /* Allow the menu to take up available space */
+    padding: 0; /* Remove padding from ul */
+}
+
+.sidebar .menu li {
+    list-style: none; /* Remove default list style */
+}
+
+.sidebar .item {
+    display: block; /* Ensure the link fills the li */
+    color: white; /* Set link color */
+    padding: 10px 15px; /* Add padding for clickable area */
+    text-decoration: none; /* Remove underline */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Transition for hover effect */
+    margin-top: 20px;
+}
+
+.sidebar .item:hover {
+    background-color: #34495e; /* Background on hover */
+    color: purple; /* Change text color on hover */
+}
+
+.sidebar .item.active {
+    background-color: #34495e; /* Background for active item */
+}

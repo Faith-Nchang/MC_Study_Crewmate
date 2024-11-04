@@ -1,0 +1,54 @@
+.create-group-form {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    margin-top: 50px;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+    max-width: 1000px;
+    padding-right: 50px;
+}
+
+label {
+    color: purple;
+    font-weight: bold;
+    font: 1em sans-serif;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid purple;
+    display: block;
+
+}
+
+.radio {
+    align-items: center;
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.submit-btn {
+    background-color: purple;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #442344;
+}
