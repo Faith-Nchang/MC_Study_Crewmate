@@ -1,10 +1,11 @@
 import React from 'react';
 import './GroupCard.css';
 
-const GroupCard = ({ groupName, groupType, description, totalMembers, onEditGroup, onDeleteGroup, onViewGroup }) => {
+const GroupCard = ({ groupName, groupType, description, totalMembers, onEditGroup, onDeleteGroup, onViewGroup, highlight }) => {
     return (
-        <div className="group-card">
+        <div className={`group-card ${highlight ? 'highlight' : ''}`}>
             <h2>{groupName}</h2>
+            {highlight && <p className="highlight-message">This group has a lot of members!</p>}
             <p className="group-type">{groupType}</p>
             <p className="description">{description}</p>
             <p className="total-members">Total Members: {totalMembers}</p>

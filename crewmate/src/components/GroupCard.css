@@ -7,13 +7,16 @@
     margin: 16px;
     box-shadow:  20px 20px 20px rgba(0, 255, 255, 0.7);
     background-color: rgba(142, 50, 142, 0.9);
-    width: 370px;
+    width: 350px;
     position: relative; 
     overflow: hidden; 
     color: white;
 }
 
 
+.group-card.highlight {
+    box-shadow: 20px 20px 20px rgba(255, 20, 147, 0.7); /* Pink shadow for highlight */
+}
 
 .group-card h2 {
     margin: 0 0 8px;
@@ -48,4 +51,8 @@ button {
 
 button:hover {
     background-color: #442344;
+}
+
+.highlight-message {
+    color: aquamarine;
 }

@@ -54,31 +54,38 @@ const CreateGroup = () => {
                             <input type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
                         </label>
                     </div>
-                    <div>
-                        <label>
-                            Course Code:
-                            <input type="text" value={courseCode} onChange={(e) => setCourseCode(e.target.value)} />
-                        </label>
-                    </div>
+                   
                     <div>
                         <label>
                             Group Type:
                             <div className="radio">
                                 
                                 <label>
-                                    <input type="radio" value="Study" checked={groupType === 'Study'} onChange={(e) => setGroupType(e.target.value)} />
+                                    <input type="radio" value="Study" checked={groupType === 'Study'} onChange={(e) => {
+                                        setGroupType(e.target.value);
+                                        setCourseCode('');
+                                    }} />
                                     Study
                                 </label>
                                 <label>
-                                    <input type="radio" value="Project" checked={groupType === 'Project'} onChange={(e) => setGroupType(e.target.value)} />
+                                    <input type="radio" value="Project" checked={groupType === 'Project'} onChange={(e) => {
+                                        setGroupType(e.target.value);
+                                        setCourseCode('NA');
+                                    }} />
                                     Project
                                 </label>
                                 <label>
-                                    <input type="radio" value="Social" checked={groupType === 'Social'} onChange={(e) => setGroupType(e.target.value)} />
+                                    <input type="radio" value="Social" checked={groupType === 'Social'} onChange={(e) => {
+                                        setGroupType(e.target.value);
+                                        setCourseCode('NA');
+                                    }} />
                                     Social
                                 </label>
                                 <label>
-                                    <input type="radio" value="Casual" checked={groupType === 'Casual'} onChange={(e) => setGroupType(e.target.value)} />
+                                    <input type="radio" value="Casual" checked={groupType === 'Casual'} onChange={(e) => {
+                                        setGroupType(e.target.value);
+                                        setCourseCode('NA');
+                                    }} />
                                     Casual
                                 </label>
                             </div>
@@ -88,6 +95,12 @@ const CreateGroup = () => {
                         <label>
                             Description:
                             <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+                        </label>
+                    </div>
+                     <div>
+                        <label>
+                            Course Code:
+                            <input type="text" value={courseCode} onChange={(e) => setCourseCode(e.target.value)} disabled={groupType !== 'Study'} />
                         </label>
                     </div>
                     <div>
