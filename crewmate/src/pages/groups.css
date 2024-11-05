@@ -8,6 +8,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin: 30px 0;
+    align-items: center;
 }
 
 .stats_header {

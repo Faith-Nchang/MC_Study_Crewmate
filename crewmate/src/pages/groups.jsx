@@ -74,29 +74,31 @@ const Groups = () => {
             <SideBar />
             <div className="main">
                 <h1>All groups to form crew mates</h1>
-                <div className="stats">
-                    <h2 className="stats_header">Group Statistics</h2>
-                    <div className="stats-data">
-                        <div>
-                        <PieChart width={400} height={200}>
-                            <Pie
-                                dataKey="value"
-                                isAnimationActive={false}
-                                data={statsData}
-                                cx="50%"
-                                cy="50%"
-                                outerRadius={80}
-                                fill="#8884d8"
-                                label
-                            />
-                            <Tooltip />
-                        </PieChart>
-                        </div>
-                            <Card content={totalGroups + ' groups created'} />
-                        <div>
-                        </div>
-                        </div>
-                </div>
+                {groups.length > 0 && (
+                    <div className="stats">
+                        <h2 className="stats_header">Group Statistics</h2>
+                        <div className="stats-data">
+                            <div>
+                                <PieChart width={400} height={200}>
+                                    <Pie
+                                        dataKey="value"
+                                        isAnimationActive={false}
+                                        data={statsData}
+                                        cx="50%"
+                                        cy="50%"
+                                        outerRadius={80}
+                                        fill="#8884d8"
+                                        label
+                                    />
+                                    <Tooltip />
+                                </PieChart>
+                            </div>
+                                <div>
+                                    <Card content={'Total groups: ' + totalGroups } />
+                                </div>
+                            </div>
+                    </div>
+                )}
                 <div className="groups">
                     {groups.length > 0 ? (
                         groups.map((group) => (
